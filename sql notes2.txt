@@ -1,0 +1,45 @@
+
+select * from employee;
+select * from employee order by salary asc;
+select salary from employee order by salary desc;
+select * from employee where firstname is not null;
+delete employee where id=102; 
+update employee set dept='entc' where id=105;
+alter table employee add new_salry varchar(10); 
+update employee set new_salry=23000 where id=103;
+
+--Functions---
+--min,max,avg,summ,count,district----
+
+select min(salary) from employee;
+select min(salary) as min_salry from employee;--- with new col_name
+select firstname,salary,max(salary) as new_salary from employee group by firstname,salary having max(salary)>10000 order by new_salary desc;
+select dept,sum(salary) as new_sal from employee where dept='entc' group by dept having sum(salary)>10000 order by dept,new_sal desc; 
+select firstname,salary,max(salary) as new_salary from employee group by firstname,salary order by new_salary desc;
+
+---dept wise toatal salry
+select dept,sum(salary) as new from employee group by dept, salary having sum(salary)>10000;
+
+---count
+select count(salary) from employee;
+select count(*) from employee;
+
+--top
+select top 2 * from employee;
+select top 2 salary from employee order by salary;
+select top 3 salary,dept from employee order by salary,dept asc;
+
+--distinct-dupliicat not allowed
+select distinct(salary),count(dept) from employee group by salary,dept;
+select distinct (firstname)from employee;
+
+
+
+
+
+
+
+
+
+
+ 
